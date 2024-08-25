@@ -3,24 +3,24 @@ import { View, StyleSheet } from 'react-native';
 import { TextInput, Button, Text } from "@react-native-material/core";
 import axios from 'axios';
 
-export default function LoginScreen({ navigation }) {
+export default function RegisterScreen({ navigation }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = async () => {
+  const handleRegister = async () => {
     try {
-      const response = await axios.post('http://192.168.1.3:3000/login', { username, password });
+      const response = await axios.post('http://192.168.1.3:5000/api/register', { username, password });
       if (response.data.success) {
         navigation.replace('Home', { userId: response.data.userId });
       }
     } catch (error) {
-      console.error('Login failed:', error);
+      console.error('Registration failed:', error);
     }
   };
 
   return (
     <View style={styles.container}>
-      <Text variant="h4" style={styles.title}>Login</Text>
+      <Text variant="h4" style={styles.title}>Register</Text>
       <TextInput
         label="Username"
         value={username}
@@ -36,8 +36,7 @@ export default function LoginScreen({ navigation }) {
         variant="outlined"
         style={styles.input}
       />
-      <Button title="Login" onPress={handleLogin} color="#673AB7" style={styles.button} />
-      <Button title="Register" onPress={() => navigation.navigate('Register')} variant="text" color="#673AB7" />
+      <Button title="Register" onPress={handleRegister} color="#673AB7" />
     </View>
   );
 }
@@ -56,8 +55,5 @@ const styles = StyleSheet.create({
   },
   input: {
     marginBottom: 15,
-  },
-  button: {
-    marginBottom: 10,
   },
 });

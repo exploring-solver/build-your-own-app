@@ -4,53 +4,55 @@ import { Tabs } from 'expo-router';
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { Colors } from '@/constants/Colors';
 import { TabBarIcon } from '@/components/navigation/TabBarIcon';
+import AppNavigator from '../navigation/AppNavigator'
 
 export default function Homescreen() {
   const colorScheme = useColorScheme();
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-      }}>
-      <Tabs.Screen
-        name="StarterScreen"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="ShareLocationScreen"
-        options={{
-          title: 'Share Location',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'location' : 'location-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="TrackUserScreen"
-        options={{
-          title: 'Track User',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="SettingsScreen"
-        options={{
-          title: 'Settings',
-          tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    // <Tabs
+    //   screenOptions={{
+    //     tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
+    //     headerShown: false,
+    //   }}>
+    //   <Tabs.Screen
+    //     name="StarterScreen"
+    //     options={{
+    //       title: 'Home',
+    //       tabBarIcon: ({ color, focused }) => (
+    //         <TabBarIcon name={focused ? 'home' : 'home-outline'} color={color} />
+    //       ),
+    //     }}
+    //   />
+    //   <Tabs.Screen
+    //     name="ShareLocationScreen"
+    //     options={{
+    //       title: 'Share Location',
+    //       tabBarIcon: ({ color, focused }) => (
+    //         <TabBarIcon name={focused ? 'location' : 'location-outline'} color={color} />
+    //       ),
+    //     }}
+    //   />
+    //   <Tabs.Screen
+    //     name="TrackUserScreen"
+    //     options={{
+    //       title: 'Track User',
+    //       tabBarIcon: ({ color, focused }) => (
+    //         <TabBarIcon name={focused ? 'people' : 'people-outline'} color={color} />
+    //       ),
+    //     }}
+    //   />
+    //   <Tabs.Screen
+    //     name="SettingsScreen"
+    //     options={{
+    //       title: 'Settings',
+    //       tabBarIcon: ({ color, focused }) => (
+    //         <TabBarIcon name={focused ? 'settings' : 'settings-outline'} color={color} />
+    //       ),
+    //     }}
+    //   />
+    // </Tabs>
+    <AppNavigator/>
   );
 }
 
